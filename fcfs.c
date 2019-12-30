@@ -50,7 +50,7 @@ int main(){
     //printing after sorting
     printf("Process No \t Arrival time \t Burst Time \n");
     for(i=0;i<n;i++){
-        printf("%6d \t %5.0lf \t %5.0lf\n",process[i].no,process[i].at,process[i].bt);
+        printf("%6d \t\t %5.0lf \t\t %5.0lf\n",process[i].no,process[i].at,process[i].bt);
     }
     printf("\n\n");
     
