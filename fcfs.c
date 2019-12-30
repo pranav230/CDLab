@@ -1,5 +1,7 @@
 #include<stdio.h>
 
+const int MAX = 10;
+
 struct pInfo{
     int no;
     double at;
@@ -27,7 +29,7 @@ int main(){
     printf("Enter the number of proesses:");
     scanf("%d",&n);
     
-    info process[10];
+    info process[MAX];
     //taking input
     for(i=0;i<n;i++){
         printf("Enter the info for process %d:\n",i+1);
