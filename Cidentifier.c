@@ -11,6 +11,7 @@ int main()
     char str[MAX];
     int i;
     printf("Enter the Identifier:");
+    //another way to take input of a string with spaces
     scanf("%[^\n]%*c", str);
     
     if(strlen(str) > MAX){
