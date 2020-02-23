@@ -1,7 +1,9 @@
 # include<stdio.h>
 # include<stdlib.h>
+
 # define MAX 10
 
+//structure of a process
 struct process
 {
 	int arrival;
@@ -13,9 +15,21 @@ struct process
 	int rem; //remaining time
 };
 
-void sort_priority(struct process p[], int n);
-void sort_proc(struct process p[], int n);
-void swap(struct process *p1, struct process *p2);
+//comparators for sorting
+
+int cmp_at(const void *a,const void *b){
+    process *temp1=(info *)a;
+    process *temp2=(info *)b;
+    return (temp1->priority > temp2->priority);
+}
+
+int cmp_proc(const void *a,const void *b){
+    process *temp1=(info *)a;
+    process *temp2=(info *)b;
+    return (temp1->proc > temp2->proc);
+}
+
+//comparators finished
 
 int main()
 {
@@ -40,7 +54,7 @@ int main()
 		p[i].rem = p[i].burst; //initialising remaining time with burst time
 	}
 	
-	sort_priority(p, num);
+	qsort(p,num,sizeof(process),cmp_p);
 	
 	for(i=0,k=0; k<num; i++) //i counter counts the seconds passed
 	//each iteration means one second time 
@@ -49,19 +63,20 @@ int main()
 		{
 			if(p[j].arrival <= i && p[j].rem != 0)
 			{
-				p[j].rem--; 
+				p[j].rem--;
 				if(p[j].rem == 0)
 				{
 					k++;
 					p[j].wait = i+1 - (p[j].burst + p[j].arrival);
 					p[j].turn = p[j].wait + p[j].burst;
-				}	
+				}
+				//break after every second
 				break;
 			}
 		}
 	}
 	
-	sort_proc(p, num);
+	qsort(p,num,sizeof(process),cmp_proc);
 	
 	for(i=0;i<num;i++)
 	{
@@ -80,39 +95,3 @@ int main()
 	printf("\nAverage turn around time = %lf ms\n", total_turn/num );
 	return 0;
 }
-
-void sort_priority(struct process p[], int n)
-{ 
-    int i, j;
-    for (i = 0; i < n; i++) 
-    {  
-        for(j = 0; j < n-i-1; j++)
-        {
-        	if (p[j].priority > p[j+1].priority) 
-        		swap(&p[j], &p[j+1]);
-        }
-
-    }
-} 
-
-void sort_proc(struct process p[], int n)
-{ 
-    int i, j;
-    for (i = 0; i < n; i++) 
-    {  
-        for(j = 0; j < n-i-1; j++)
-        {
-        	if (p[j].proc > p[j+1].proc) 
-        		swap(&p[j], &p[j+1]);
-        }
-
-    }
-} 
-
-void swap(struct process *p1, struct process *p2)
-{
-	struct process temp;
-	temp=*p1;
-	*p1=*p2;
-	*p2=temp;
-}	
