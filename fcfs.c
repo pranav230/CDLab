@@ -12,6 +12,8 @@ struct pInfo{
 
 typedef struct pInfo info;
 
+//comparators for sorting function
+
 int cmp_at(const void *a,const void *b){
     info *temp1=(info *)a;
     info *temp2=(info *)b;
@@ -23,6 +25,8 @@ int cmp_pno(const void *a,const void *b){
     info *temp2=(info *)b;
     return (temp1->no > temp2->no);
 }
+
+//comparator finished
 
 int main(){
     int n,i,j;
