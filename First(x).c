@@ -26,7 +26,7 @@ void FIRST(char c, int q1, int q2)
             { 
 				if(productions[q1][q2] == '\0')
 				{
-                    first[n++] = '#'; 
+                    first[count++] = '#'; 
                     printf("\nElement not found");
                     // first[count++]=' ';
 				}
