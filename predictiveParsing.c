@@ -56,7 +56,7 @@ int main()
 	
     for(i=0;i<nop;i++)
 	    for(j=3;productions[i][j]!='\0';j++)
-	        if(islower(productions[i][j])||(!isalpha(productions[i][j])))
+	        if( islower(productions[i][j]) || (!isalpha(productions[i][j])))
 	            addtoter(productions[i][j]);
 	
     for(j=0;ter[j]!='\0';j++);
@@ -69,7 +69,7 @@ int main()
 	{
 		printf("Enter first of:");
 		
-        for(k=3;k<productions[i][k]!='\0';k++)
+        for(k=3;productions[i][k]!='\0';k++)
 		    printf("%c",productions[i][k]);
 		
         printf("=");
