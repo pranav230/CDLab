@@ -82,7 +82,7 @@ int main()
         first[i][0]=productions[i][0];
 	}
 	
-    printf("Enter follow of all non terminals without any space b/w symbols like abc#, # for epsilon\n");
+    printf("Enter follow of all non terminals without any space b/w symbols like abc$\n");
 	
     for(i=0;nont[i]!='\0';i++)
 	{
